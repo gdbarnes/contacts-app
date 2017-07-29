@@ -1,17 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+  state = { contacts: [] };
+
+  componentDidMount() {
+    fetch("https://randomuser.me/api/?nat=gb&results=50")
+      .then(response => response.json())
+      .then(parsedResponse =>
+        parsedResponse.results.map(user => ({
+          name: `${user.name.first} ${user.name.last}`,
+          email: user.email,
+          thumbmail: user.picture.thumbnail
+        }))
+      )
+      .then(contacts => this.setState({ contacts }));
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Contact list</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {/* <ContactsApp contacts={this.state.contacts} /> */}
         </p>
       </div>
     );
