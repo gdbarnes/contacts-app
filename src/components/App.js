@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
+import Contacts from "./Contacts";
+import "./../styles/App.css";
 
 class App extends Component {
   state = { contacts: [] };
@@ -8,10 +9,11 @@ class App extends Component {
     fetch("https://randomuser.me/api/?nat=gb&results=50")
       .then(response => response.json())
       .then(parsedResponse =>
-        parsedResponse.results.map(user => ({
+        parsedResponse.results.map((user, index) => ({
+          id: index,
           name: `${user.name.first} ${user.name.last}`,
           email: user.email,
-          thumbmail: user.picture.thumbnail
+          thumbnail: user.picture.large
         }))
       )
       .then(contacts => this.setState({ contacts }));
@@ -19,13 +21,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
+      <div className="app-container">
+        <div className="app-header">
           <h2>Contact list</h2>
         </div>
-        <p className="App-intro">
-          {/* <ContactsApp contacts={this.state.contacts} /> */}
-        </p>
+        <div className="app-body">
+          <Contacts contacts={this.state.contacts} />
+        </div>
       </div>
     );
   }

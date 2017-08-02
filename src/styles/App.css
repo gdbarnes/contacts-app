@@ -1,0 +1,48 @@
+.app-container {
+  text-align: center;
+}
+
+.app-header {
+  background-color: #222;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.app-body {
+  font-size: large;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-search {
+  font-size: large;
+  padding: 8px;
+}
+
+.contacts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact {
+  margin-bottom: 32px;
+}
+
+.contact p {
+  margin: 0;
+}
+
+.contact-image-link {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.contact-image {
+  border-radius: 64px;
+}
+
+.contact-email {
+  color: #222;
+  font-size: small;
+}
